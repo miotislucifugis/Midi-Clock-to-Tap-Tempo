@@ -1,6 +1,10 @@
 # Midi-Clock-to-Tap-Tempo
 Midi sync virtually any effect pedal (or other device) that has tap tempo button or footswitch
-This layout is for the 5v Arduino ProMicro, 6n138 for the midi in circuit (midi in DIN jack or 3.5 trs to TP8) and 4n32  to provide isolated control over the pedal's tap tempo button pins.  (TP10 -2 pin header wired to tap tempo button)
+This circuit standard 5v midi "In" connected to the arduino's serial port. The output is connected indirectly (optoisolated) to the pedals tap tempo switch.  When the arduino receives midi clock commands,  it it calculates the tempo based on the midi clock ticks and send 3 pulses 4n32 which connects, and quick disconnects the pins on the tap tampo switch on the quarter note, simulating the standard "3-tap" tempo entry used by most devices.    Afterward, the arduino will only send "taps", if it detects a change in the received midi tempo. 
+
+
+This layout is for the 5v Arduino ProMicro, 6n138 for the midi in circuit (midi in DIN jack or 3.5 trs to TP8) and 4n32 to provide isolated control over the pedal's tap tempo button pins.  (TP10 -2 pin header wired to tap tempo button)   Additionally, 1x 1n4148 diode, 3x 220ohm and 1x 3300 ohm resistors are used.
+
 The 3 pin header, TP9,is power: GND, VCC(5v), RAW (9v or less! ).  For most uses, connect GND and RAW to the pedal's 9v DC jack and leave 5v disconnected.  
 
 
