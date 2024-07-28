@@ -20,20 +20,18 @@ int LED = 13;
 int note = 24; // tap on: whole note = 96;  half note = 48; quarter note = 24
 
 
-
 void setup() {
 pinMode (tapPin, OUTPUT);
 pinMode (LED, OUTPUT);
-Serial.begin(31250);
+Serial1.begin(31250);
 }
 
 void loop() {
-if(Serial.available() > 0) {
-   data = Serial.read();
+if(Serial1.available() > 0) {
+   data = Serial1.read();
   if(data == midi_clock) {
      count();
      Sync();
-    // delay (10);
     }
   }
 }
@@ -47,11 +45,13 @@ void Sync() {
    }
  if((counter == 0) && (tapCount<= 3)){
      digitalWrite(tapPin, HIGH);
+     TXLED1;
      digitalWrite(LED, HIGH);
      tapCount++;
    }
  if(counter == 6){ // this will set the duration of the tap
       digitalWrite(tapPin, LOW); 
+      TXLED0;
       digitalWrite(LED, LOW);
    }
  if (interval != prevInterval){
@@ -72,4 +72,3 @@ void count(){
  
 }  
  
-
