@@ -45,13 +45,13 @@ void Sync() {
    }
  if((counter == 0) && (tapCount<= 3)){
      digitalWrite(tapPin, HIGH);
-     TXLED1;
+     TXLED1;  //promicro LED on
      digitalWrite(LED, HIGH);
      tapCount++;
    }
  if(counter == 6){ // this will set the duration of the tap
       digitalWrite(tapPin, LOW); 
-      TXLED0;
+      TXLED0;  //promicro LED off
       digitalWrite(LED, LOW);
    }
  if (interval != prevInterval){
